@@ -100,7 +100,7 @@
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
   var width = document.body.offsetWidth,
-      height = document.body.offsetHeight;
+      height = document.body.scrollHeight;
 
   var vertices = d3.range(25).map(function(d) {
     return [Math.random() * width, Math.random() * height,
