@@ -3,7 +3,86 @@
 <head>
   <title>Sam Siegart</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: "Avenir Next",Avenir,sans-serif;
+    }
+
+    .container {
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
+
+    .card {
+      position: relative;
+      text-align: center;
+      padding: 1em;
+      width: 60%;
+      min-height: 50%;
+      top: 10%;
+      bottom: 10%;
+      margin: auto;
+      margin-bottom: 15%;
+      background-color: rgba(240, 240, 240, .6);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #000;
+      font-weight: bold;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .flex-container {
+      padding: 0;
+      margin-top: 3em;
+      list-style: none;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-flow: row wrap;
+      justify-content: space-around;
+    }
+
+    .flex-item {
+      background: #999999;
+      padding: 8px;
+      width: 150px;
+      height: 120px;
+      margin-top: 8px;
+      line-height: 120px;
+      color: white;
+      font-weight: bold;
+      font-size: 2em;
+      text-align: center;
+    }
+
+    .flex-item:hover {
+      background: #aaa;
+    }
+
+    path {
+      stroke: #bbb;
+    }
+
+    .q0-9 { fill: rgb(235,235,235); }
+    .q1-9 { fill: rgb(220,220,220); }
+
+    svg {
+      position: fixed;
+      z-index: -1;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -18,6 +97,61 @@
     </div>
   </div>
 </body>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="voronoi.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script>
+  var width = document.body.offsetWidth,
+      height = document.body.offsetHeight;
+
+  var vertices = d3.range(25).map(function(d) {
+    return [Math.random() * width, Math.random() * height,
+            Math.random() * 1.5, Math.random() * 1.5];
+  });
+
+  var voronoi = d3.geom.voronoi()
+      .clipExtent([[0, 0], [width, height]]);
+
+  var svg = d3.select(".container").insert("svg", ".card")
+      .attr("width", width)
+      .attr("height", height)
+
+  var path = svg.append("g").selectAll("path");
+
+  function translate() {
+    for(var i = 0; i < 25; i = i + 1){
+      vertices[i][0] = vertices[i][0] + vertices[i][2];
+      vertices[i][1] = vertices[i][1] + vertices[i][3];
+      if(vertices[i][0] >= width - 1.6){
+          vertices[i][0] = width - 1.6;
+          vertices[i][2] = vertices[i][2] * -1;
+      } else if(vertices[i][0] <= 1.6) {
+          vertices[i][0] = 1.6;
+          vertices[i][2] = vertices[i][2] * -1;
+      }
+      if(vertices[i][1] >= height - 1.6){
+          vertices[i][1] = height - 1.6;
+          vertices[i][3] = vertices[i][3] * -1;
+      } else if(vertices[i][1] <= 1.6) {
+          vertices[i][1] = 1.6;
+          vertices[i][3] = vertices[i][3] * -1;
+      }
+    }
+  }
+
+  redraw();
+  function redraw() {
+    window.requestAnimationFrame(redraw);
+    path = path
+        .data(voronoi(vertices), polygon);
+    path.exit().remove();
+    path.enter().append("path")
+        .attr("class", function(d, i) { return "q" + (i % 2) + "-9"; })
+        .attr("d", polygon);
+    path.order();
+    translate();
+  }
+
+  function polygon(d) {
+    return "M" + d.join("L") + "Z";
+  }
+</script>
 </html>
