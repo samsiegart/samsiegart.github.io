@@ -3,37 +3,44 @@
 <head>
   <title>Sam Siegart</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Abel" />
   <style>
     html, body {
       margin: 0;
+      padding: 0;
       height: 100%;
-      font-family: "Avenir Next",Avenir,sans-serif;
+      font-family: "Abel",Abel,sans-serif;
     }
 
     .container {
+      position: absolute;
       height: 100%;
       width: 100%;
-      position: relative;
+      padding: 0;
+      margin: 0;
+      top: 0;
     }
 
     .card {
+      margin: 0;
       position: relative;
+      top: 15%;
+      width: 400px;
+      max-width: 90%;
       text-align: center;
-      padding: 1em;
-      width: 60%;
-      min-height: 50%;
-      top: 10%;
-      bottom: 10%;
       margin: auto;
-      margin-bottom: 15%;
-      background-color: rgba(90, 90, 256, .6);
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 50, 0.2), 0 6px 20px 0 rgba(0, 0, 50, 0.19);
+      background: rgb(15,15,30);
+      color: #dddddd;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #3333ff;
+
     }
 
-    h1 {
+    .title {
+      position: relative;
+      margin: 1em;
       font-size: 3em;
-      color: #000;
-      font-weight: bold;
     }
 
     a {
@@ -41,9 +48,23 @@
       color: inherit;
     }
 
-    .flex-container {
+    .bottombar {
       padding: 0;
-      margin-top: 3em;
+      position: relative;
+      top: 25%;
+      width: 800px;
+      max-width: 80%;
+      margin: auto;
+      margin-bottom: 30px;
+    }
+
+    .subtitle {
+      position: relative;
+      padding-bottom: 15px;
+      font-size: 1em;
+    }
+
+    .flex-container {
       list-style: none;
       display: -webkit-box;
       display: -moz-box;
@@ -52,19 +73,23 @@
       display: flex;
       -webkit-flex-flow: row wrap;
       justify-content: space-around;
+      padding-left: 0px;
+      margin: auto;
     }
 
     .flex-item {
-      background: #111111;
-      padding: 8px;
       width: 150px;
-      height: 120px;
-      margin-top: 8px;
-      line-height: 120px;
-      color: #3333ff;
-      font-weight: bold;
-      font-size: 2em;
+      height: 45px;
+      background: rgba(15,15,30,0.9);
+      line-height: 45px;
       text-align: center;
+      color: #dddddd;
+      font-weight: bold;
+      font-size: 1.25em;
+      border-style: solid;
+      border-width: 2px;
+      border-color: #3333ff;
+      margin: 8px;
     }
 
     .flex-item:hover {
@@ -75,19 +100,27 @@
       stroke: #3333ff;
     }
 
-    .q0-9 { fill: rgb(0,0,0); }
-    .q1-9 { fill: rgb(0,0,0); }
+    .q0-9 { fill: rgb(15,15,30); }
+    .q1-9 { fill: rgb(15,15,30); }
 
     svg {
       position: fixed;
       z-index: -1;
+    }
+
+    #shopify {
+      color: #acacff;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="card">
-      <h1>Sam Siegart</h1>
+      <div class="title">Sam Siegart</div>
+      <div class="subtitle">SUNY Buffalo Comp Sci & Math '17</div>
+      <div class="subtitle">Previously <a href="htts://shopify.com" target="_blank" id="shopify">Shopify</a></div>
+    </div>
+    <div class="bottombar">
       <ul class="flex-container">
         <a href="sam_siegart_resume.pdf" target="_blank"><li class="flex-item">Resume</li></a>
         <a href="http://github.com/samsiegart" target="_blank"><li class="flex-item">GitHub</li></a>
