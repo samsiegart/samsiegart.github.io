@@ -152,6 +152,7 @@
   var svg = d3.select(".container").insert("svg", ".card")
       .attr("width", width)
       .attr("height", height)
+      .attr("id", "voron");
 
   var path = svg.append("g").selectAll("path");
 
@@ -192,5 +193,34 @@
   function polygon(d) {
     return "M" + d.join("L") + "Z";
   }
+
+  function resize() {
+    width = document.body.offsetWidth,
+    height = document.body.scrollHeight;
+
+    vertices = d3.range(35).map(function(d) {
+      return [Math.random() * width, Math.random() * height,
+              Math.random() * 1.5, Math.random() * 1.5];
+    });
+
+    voronoi = d3.geom.voronoi()
+      .clipExtent([[0, 0], [width, height]]);
+
+    var elem = document.getElementById("voron");
+    elem.parentElement.removeChild(elem);
+
+    svg = d3.select(".container").insert("svg", ".card")
+      .attr("width", width)
+      .attr("height", height)
+      .attr("id", "voron");
+
+    path = svg.append("g").selectAll("path");
+  }
+
+  function triggerResize(){
+    window.requestAnimationFrame(resize);
+  }
+  window.addEventListener('orientationchange', triggerResize);
+  window.addEventListener('resize', triggerResize);
 </script>
 </html>
