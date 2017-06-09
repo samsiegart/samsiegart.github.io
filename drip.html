@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sam Siegart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Abel"/>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: "Abel",Abel,sans-serif;
+      background-color: #000;
+    }
+
+    .container {
+      position: absolute;
+      z-index: 0;
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      top: 0;
+    }
+
+    .card {
+      margin-left: 0;
+      position: relative;
+      top: 0;
+      width: 400px;
+      max-width: 80%;
+      text-align: left;
+      padding-left: 0.5em;
+      background: rgba(220,220,220,1.0);
+      color: #000;
+    }
+
+    #vid {
+      position: absolute;
+      z-index: -1;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      image-fit: fill;
+    }
+
+    .title {
+      position: relative;
+      font-size: 3em;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .subtitle {
+      position: relative;
+      padding-bottom: 15px;
+      font-size: 1em;
+    }
+
+    .sidebar {
+      height: 35px;
+      width: 50px;
+      background: rgba(190,190,190,1.0);
+      border-top: 1px solid #000;
+      cursor: pointer;
+    }
+
+    .gg:hover {
+      animation-name: slideg;
+      animation-duration: 0.15s;
+      width: 280px;
+      background: rgba(0,170,0,0.8);
+    }
+
+    @keyframes slideg {
+      from {width: 50px; background: rgba(190,190,190,1.0);}
+      to {width: 280px; background: rgba(0,170,0,0.8);}
+    }
+
+    .bb:hover {
+      animation-name: slideb;
+      animation-duration: 0.25s;
+      width: 440px;
+      background: rgba(0,0,170,0.8);
+    }
+
+    @keyframes slideb {
+      from {width: 50px; background: rgba(190,190,190,1.0);}
+      to {width: 440px; background: rgba(0,0,170,0.8);}
+    }
+
+    .pp:hover {
+      animation-name: slidep;
+      animation-duration: 0.3s;
+      width: 540px;
+      background: rgba(170,0,170,0.8);
+    }
+
+    @keyframes slidep {
+      from {width: 50px; background: rgba(190,190,190,1.0);}
+      to {width: 540px; background: rgba(170,0,170,0.8);}
+    }
+
+    .rr:hover {
+      animation-name: slider;
+      animation-duration: 0.2s;
+      width: 360px;
+      background: rgba(170,0,0,0.8);
+    }
+
+    @keyframes slider {
+      from {width: 50px; background: rgba(190,190,190,1.0);}
+      to {width: 360px; background: rgba(170,0,0,0.8);}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <video autoplay loop id='vid' src='witchcraft.mp4'>
+    </video>
+    <div class="card">
+      <div class="title">artificial.thoughts</div>
+      <div class="subtitles">
+        <div class="subtitle">i don't want to feel responsible for every pixel on this screen</div>
+      </div>
+    </div>
+    <div class="sidebar rr" id="witch">
+    </div>
+    <div class="sidebar pp" id="god">
+    </div>
+    <div class="sidebar bb" id="queen">
+    </div>
+    <div class="sidebar gg" id="alpha">
+    </div>
+  </div>
+</body>
+<script>
+  document.getElementById("witch").onclick = function(){
+    document.getElementById("vid").src = 'witchcraft.mp4';
+  };
+  document.getElementById("god").onclick = function(){
+    document.getElementById("vid").src = 'thed.mp4';
+  };
+  document.getElementById("queen").onclick = function(){
+    document.getElementById("vid").src = 'bjork.mp4';
+  };
+  document.getElementById("alpha").onclick = function(){
+    document.getElementById("vid").src = 'jones.mp4';
+  };
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-84928411-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</html>
