@@ -125,11 +125,10 @@
       z-index: -1;
     }
 
-    #shopify {
-      color: #acacff;
-    }
-
-    #amazon {
+    #shopify,
+    #amazon,
+    #buffalo,
+    #google {
       color: #acacff;
     }
 
@@ -141,6 +140,19 @@
       fill: #006;
     }
 
+    @media only screen and (max-width: 419px) {
+      .bottombar {
+        top: 8%;
+      }
+
+      .card {
+        top: 5%;
+      }
+
+      .title {
+        margin: 0.5em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -148,9 +160,16 @@
     <div class="card">
       <div class="title">Sam Siegart</div>
       <div class="subtitles">
-        <div class="subtitle">SUNY Buffalo Comp Sci & Math '17</div>
-        <div class="subtitle">SDE at <a href="https://www.lab126.com/" target="_blank" id="amazon">Amazon</a></div>
-        <div class="subtitle">Previously <a href="https://shopify.com" target="_blank" id="shopify">Shopify</a></div>
+        <div class="subtitle">
+          Software Engineer @ <a href="https://google.com" target="_blank" id="google">Google
+        </div>
+        <div class="subtitle">
+          <a href="https://www.buffalo.edu/" target="_blank" id="buffalo">SUNY Buffalo</a> Comp Sci & Math '17
+        </div>
+        <div class="subtitle">
+          Previously <a href="https://shopify.com" target="_blank" id="shopify">Shopify</a>,
+          <a href="https://www.lab126.com/" target="_blank" id="amazon">Amazon</a>
+        </div>
       </div>
     </div>
     <div class="bottombar">
